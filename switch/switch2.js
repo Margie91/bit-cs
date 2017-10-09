@@ -10,9 +10,9 @@ switch (dayOfWeek) {
         break;
     case 6:
     case 7:
-    console.log('It\'s weekend');
+        console.log('It\'s weekend');
         break;
     default:
-    console.log('Input must be a number between 1 and 7.');
+        console.log('Input must be a number between 1 and 7.');
         break;
-    }
+}
