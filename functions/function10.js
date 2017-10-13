@@ -9,4 +9,4 @@ function getnChars(str, n) {
     return res + '...';
 }
 
-console.log(getnChars('Margie is a bitch', 13));
+console.log(getnChars('abcdefg', 3));

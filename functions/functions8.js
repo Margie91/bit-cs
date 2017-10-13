@@ -13,4 +13,4 @@ function isPrime(num) {
     return num + ' is a prime number.';
 }
 
-console.log(isPrime(17));
+console.log(isPrime(2));

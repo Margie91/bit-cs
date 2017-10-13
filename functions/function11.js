@@ -16,8 +16,8 @@ function yearsUntilRetire(year, sex) {
         default:
             return 'Please enter m or f for sex.'
     }
-
-    var result = margin - (2017 - year);
+    var age = yearOld(year);
+    var result = margin - age;
 
     if (result <= 0) {
         return 'The person is already retired';
@@ -26,3 +26,9 @@ function yearsUntilRetire(year, sex) {
 }
 
 console.log(yearsUntilRetire(1991, 'female'));
+
+function yearOld(yearOfbirth) {
+    
+    return 2017 - yearOfbirth;
+    
+}

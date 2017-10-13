@@ -14,4 +14,4 @@ function lastOcc(str, n) {
 }
 
 
-console.log(lastOcc('marijam', 's'));
+console.log(lastOcc('marijam', 'm'));
