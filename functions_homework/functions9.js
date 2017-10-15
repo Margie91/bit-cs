@@ -2,7 +2,6 @@ function hideEmail(email) {
     var firstPart = '';
     var secondPart = '';
     var hiddenMail = '';
-    //var half = 0;
 
     for (var i = 0; i < email.length; i++) {
         if (email[i] == '@') {
@@ -18,12 +17,11 @@ function hideEmail(email) {
                 secondPart += email[j];
         }
     }
-
-   // half = firstPart.length / 2;
     
     for (var i = 0; i < firstPart.length / 2; i++) {
         hiddenMail += firstPart[i];
     }
+
 
     return hiddenMail + '...' + secondPart;
 }
