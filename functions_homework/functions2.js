@@ -1,8 +1,10 @@
 function joinToString(array) {
     string = '';
     for (var i = 0; i < array.length; i++) {
-        if (!!array[i] === false || array[i] == Infinity) {
+        if (!!array[i] === false || array[i] === Infinity) {
             string += '';
+        } else if (array[i] === 0 || array[i] === ''){
+            string += array[i];
         } else {
             string += array[i];
         }
@@ -10,4 +12,4 @@ function joinToString(array) {
     return string;
 }
 
-console.log(joinToString(['1', '2', 'please', NaN, 'work', false, 'I', Infinity, 'will', undefined, 'DIE']));
+console.log(joinToString([NaN, 0, 15, false, -22, '', undefined, 47, null]));
