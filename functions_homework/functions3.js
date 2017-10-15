@@ -1,16 +1,16 @@
 function filterArray(array) {
-    var newArr = []
+    var newArray = []
     var j = 0;
     for (var i = 0; i < array.length; i++) {
         if (!!array[i] === false) {
             continue;
         } else {
-            newArr[j] = array[i];
+            newArray[j] = array[i];
             j++;
         }
 
     }
-    return newArr;
+    return newArray;
 }
 
 var array = [NaN, 0, 15, false, -22, '', undefined, 47, null];
