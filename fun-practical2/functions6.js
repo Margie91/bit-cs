@@ -6,7 +6,7 @@ function celsiusToFahrenheit(numb) {
     }
     var result = (numb * 1.8) + 32;
 
-    return result + '°F';
+    return numb + '°C is ' + result + '°F';
 }
 
 console.log(celsiusToFahrenheit(40));

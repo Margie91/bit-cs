@@ -1,9 +1,8 @@
 'use strict';
 
-function maxElement(array) {
+function filterArray(array) {
     var filteredArray = [];
     var j = 0;
-    var max = 0;
 
     for (var i = 0; i < array.length; i++) {
         if (typeof array[i] === 'number') {
@@ -13,16 +12,21 @@ function maxElement(array) {
             continue;
         }
     }
-
-    for (var i = 0; i < filteredArray.length; i++) {
-        if (filteredArray[i - 1] < filteredArray[i]) {
-            max = filteredArray[i]
-        } else {
-            continue;
-        }
-        return max;
-    }
-
+    return filteredArray;
 }
 
-console.log(maxElement([1, 'bla', 2, 'skdak', false, 3, 4, undefined, 5]));
+
+function maxElement(array) {
+    var max = array[0];
+    var filteredArray = filterArray(array);
+
+    for (var i = 0; i < filteredArray.length; i++) {
+        if (filteredArray[i] > max) {
+            max = filteredArray[i];
+        } 
+        
+    }
+    return max;
+}
+
+console.log(maxElement([1, 10, 'bla', 2, 9, 'skdak', false, 7, 3, 4, undefined, 5]));

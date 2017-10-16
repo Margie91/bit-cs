@@ -2,19 +2,17 @@
 
 function countVowels(str) {
     var string = str.toLowerCase();
-    var vowels = 0;
-
-//probaj sa loop-om!!
+    var vowels = ['a', 'e', 'i', 'o', 'u'];
+    var numOfvowel = 0;
 
     for (var i = 0; i < string.length; i++) {
-        if (string[i] == 'a' || string[i] == 'e' || string[i] === 'i' || string[i] == 'o' || string[i] == 'u') {
-            vowels++;
+        for (var j = 0; j < vowels.length; j++) {
+            if (string[i] == vowels[j]) {
+                numOfvowel++;
+            }
         }
-        
     }
-
-    return vowels;
-
+    return numOfvowel;
 }
 
-console.log(countVowels('MARIJA'));
+console.log(countVowels('AEIOUAEIOUAEIOU'));
