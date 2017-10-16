@@ -1,3 +1,5 @@
+'use strict';
+
 function lastElement(array, num) {
     var result = [];
     var last = array.length - num;

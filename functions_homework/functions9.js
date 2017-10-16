@@ -1,3 +1,4 @@
+'use strict';
 function hideEmail(email) {
     var firstPart = '';
     var secondPart = '';

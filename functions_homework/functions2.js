@@ -1,5 +1,6 @@
+'use strict';
 function joinToString(array) {
-    string = '';
+    var string = '';
     for (var i = 0; i < array.length; i++) {
         if (!!array[i] === false || array[i] === Infinity) {
             string += '';

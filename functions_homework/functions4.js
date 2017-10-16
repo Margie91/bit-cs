@@ -1,3 +1,5 @@
+'use strict'; 
+
 function reverseNum(num) {
     var string = num + '';
     var result = '';
@@ -6,6 +8,7 @@ function reverseNum(num) {
     }
     return parseInt(result);
 }
+
 
 var x = 12345;
 

@@ -1,3 +1,4 @@
+'use strict';
 function createArray(numbOfelements, element) {
     if (arguments.length < 2) {
         element = null;

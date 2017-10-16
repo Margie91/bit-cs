@@ -1,3 +1,4 @@
+'use strict';
 function filterArray(array) {
     var newArray = []
     var j = 0;
