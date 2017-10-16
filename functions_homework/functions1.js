@@ -1,3 +1,4 @@
+'use strict';
 function insertString(string1, string2, position) {
     if (position == 0 || position !== 'number') {
         position = 1;
