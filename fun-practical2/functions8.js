@@ -22,9 +22,9 @@ function findMax(array) {
     return max;
 }
 
-function maxAndMin(array) {
-    var max = findMax(array);
-    var min = findMin(array);
+function maxAndMin(array, fun1, fun2) {
+    var max = fun1(array);
+    var min = fun2(array);
     var result = [];
 
     result[0] = max;
@@ -34,4 +34,4 @@ function maxAndMin(array) {
 
 }
 
-console.log(maxAndMin([10, 5, 8, 16, 2, 3, 15, 4]));
+console.log(maxAndMin([10, 5, 8, 16, 2, 3, 15, 4], findMax, findMin));
