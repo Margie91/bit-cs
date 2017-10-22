@@ -1,12 +1,14 @@
-function padding(string, padd,leftORright) {
-    var num = padd - string.length;
+function padding(string, padd, leftORright) {
+    var result;
 
-    if(leftORright == "left"){
-        var padded = string.padStart(num);
-    }else {
-        padded = string.padEnd(num);
+    if (leftORright == "left") {
+        return result = string.padStart(padd);
+    } else if (leftORright == 'right') {
+        return result = string.padEnd(padd);
+    } else {
+        return 'Left or right?'
     }
-    return padded;
+    
 }
 
-console.log(padding("foofooo", 20, "left"));
+console.log(padding("foofooo", 20, "right"));

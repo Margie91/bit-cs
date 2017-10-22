@@ -6,4 +6,4 @@ function changeBase(num, base, newBase) {
     return result;
 }
 
-console.log(changeBase(-11111111,2,8));
+console.log(changeBase(2,10,8));

@@ -5,4 +5,4 @@ function sorting(string){
     return join;
 }
 
-console.log(sorting("cherries bananas apples"))
+console.log(sorting("cherries bananas apples"));
