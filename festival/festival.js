@@ -16,7 +16,6 @@
     var filmex = new Festival('Filmex Fest');
 
     var adults = createProgram('Oct 21 2017');
-
     var kids = createProgram('10 5 2015');
 
     var titanik = createMovie('Titanik', 190, 'drama');
@@ -72,11 +71,11 @@ function Program(date) {
         var result = '';
         var count = 0;
         for (var i = 0; i < this.listOfMovies.length; i++) {
-            result = result + '\t' + this.listOfMovies[i].getData() + '\n';
+            result = result + '\t\t' + this.listOfMovies[i].getData() + '\n';
             count += this.listOfMovies[i].length;
         }
 
-        return this.date + ', ' + count + '\n' + result;
+        return '\t' +  this.date + ', ' + count + '\n\n' + result + '\n';
     }
 
     this.addMovie = function (movie) {
