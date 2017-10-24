@@ -14,7 +14,7 @@
         return new Passenger (person, seat);
     }
 
-    var newAriport = new Airport();
+    var newAirport = new Airport();
 
     var bg_ny = createFlight('Belgrade - New York', 'Oct 25 2017');
     var bar_bg = createFlight('Barcelona - Belgrade', 'Nov 11 2017');
@@ -29,10 +29,10 @@
     bar_bg.addPassenger(pass_3);
     bar_bg.addPassenger(pass_4);
     
-    newAriport.addFlight(bg_ny);
-    newAriport.addFlight(bar_bg);
+    newAirport.addFlight(bg_ny);
+    newAirport.addFlight(bar_bg);
 
-
+    console.log(newAirport.getData());
 
 })();
 
@@ -66,7 +66,7 @@ function Flight(relation, date) {
     this.listOfPassangers = [];
 
     this.getData = function () {
-        return date + ' ' + relation;
+        return date.getDate() + '.' + (date.getMonth() + 1) + '.' + date.getFullYear() + '. ' + relation;
     }
 
     this.addPassenger = function (passenger) {
@@ -77,12 +77,24 @@ function Flight(relation, date) {
 function Airport() {
     this.name = 'Nikola Tesla';
     this.listOfFlights = [];
+    this.totalNumOfPassengers = 0;
 
     this.addFlight = function (flight) {
         this.listOfFlights.push(flight);
+        this.totalNumOfPassengers += flight.listOfPassangers.length;
     }
 
     this.getData = function () {
-        return 'Airport: ' + this.name + ', total passengers: ' + 
+        var result = '';
+        result += 'Airport: ' + this.name + ', total passengers: ' + this.totalNumOfPassengers + '\n';
+
+        for (var i = 0; i < this.listOfFlights.length; i++) {
+            result += '\t' + this.listOfFlights[i].getData() + '\n';
+            for (var j = 0; j < this.listOfFlights[i].listOfPassangers.length; j++) {
+                result += '\t\t' + this.listOfFlights[i].listOfPassangers[j].getData() + '\n';
+            }
+        }
+        
+        return result;
     }
 }
