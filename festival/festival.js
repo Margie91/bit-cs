@@ -2,6 +2,10 @@
 
 (function () {
     function createMovie(movieTitle, movieLength, stringGenre) {
+        if ((typeof movieLength) !== 'number') {
+            return;
+        }
+        
         var genre = new Genre(stringGenre);
         var movie = new Movie(movieTitle, genre, movieLength);
         return movie;
@@ -13,15 +17,15 @@
     }
 
 
-    var filmex = new Festival('Filmex Fest');
+    var filmex = new Festival('Filmex Fest', 17);
 
     var adults = createProgram('Oct 21 2017');
     var kids = createProgram('10 5 2015');
 
-    var titanik = createMovie('Titanik', 190, 'drama');
+    var titanik = createMovie('Titanik', 190 , 'drama');
     var thor = createMovie('Thor', 130, 'action');
     var inception = createMovie('Inception', 180, 'sci-fi');
-    var alien = createMovie('Alien', 143, 'horror');
+    var alien = createMovie('Alien', 130, 'horror');
 
     adults.addMovie(titanik);
     adults.addMovie(thor);
@@ -66,36 +70,64 @@ function Program(date) {
     this.date = date;
     this.listOfMovies = [];
     this.numberOfMovies = 0;
+    this.totalMovieLength = function () {
+        var count = 0;
+        for (var i = 0; i < this.listOfMovies.length; i++) {
+            count += this.listOfMovies[i].length;
+        }
+        return count;
+    }
 
     this.getData = function () {
         var result = '';
-        var count = 0;
         for (var i = 0; i < this.listOfMovies.length; i++) {
             result = result + '\t\t' + this.listOfMovies[i].getData() + '\n';
-            count += this.listOfMovies[i].length;
         }
 
-        return '\t' +  this.date + ', ' + count + '\n\n' + result + '\n';
+        return '\t' + this.date + ', ' + 'program duration: ' + this.totalMovieLength() + '\n\n' + result + '\n';
     }
+
+    
 
     this.addMovie = function (movie) {
+        if (typeof movie == 'undefined') {
+            return;
+        }
+
+        if (this.totalMovieLength() + movie.length > 480) {
+            return;
+        }
+
         this.listOfMovies.push(movie);
     }
+
+    //DOVRSI ZANR
 }
 
-function Festival(name) {
+function Festival(name, maxNumOfMovies) {
     this.name = name;
     this.listOfPrograms = [];
     this.totalMovieNumber = 0;
 
     this.getData = function () {
         var result = '';
+
+
         for (var i = 0; i < this.listOfPrograms.length; i++) {
             result += this.listOfPrograms[i].getData();
             this.totalMovieNumber += this.listOfPrograms[i].listOfMovies.length;
         }
 
+        if (this.listOfPrograms.length == 0) {
+            return 'Weekend festival' + '\n' + '\t\t' + 'Program to be announced';
+        }
+
+        if(this.totalMovieNumber > maxNumOfMovies) {
+            return 'Too many movies.'
+        }
+
         return this.name + ', ' + this.totalMovieNumber + '\n\n' + result;
+
     }
 
     this.addProgram = function (program) {
