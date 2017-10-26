@@ -1,0 +1,36 @@
+h1 {
+    text-align: center;
+}
+
+fieldset {
+    margin: 0 auto;
+    width: 500px;
+}
+
+
+
+form input{
+    display: block;
+    width: 500px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+form select {
+    width:500px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#create {
+    background-color: rgb(77, 192, 77);
+    border: none;
+    padding: 10px;
+}
+
+#createProgram {
+    background-color: rgb(77, 192, 77);
+    border: none;
+    padding: 10px;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+    <h1>Movie festival</h1>
+    <div class="createM">
+
+        <fieldset>
+            <legend>Create Movie</legend>
+
+            <form>
+                <input type="text" value='' placeholder="title" id="movieTitle">
+                <input type="number" value='' placeholder="length" id="movieLength">
+                <select name="genre-sel" id="genre-sel">
+                    <option value="none">--</option>
+                    <option value="drama">Drama</option>
+                    <option value="action">Action</option>
+                    <option value="horror">Horror</option>
+                    <option value="commedy">Commedy</option>
+                </select>
+
+                <div id="movieError" class="error"></div>
+                <input id='create' type="button" onclick="createMovie()" value="Create Movie">
+
+                <hr>
+
+                <div id="movie-list"></div>
+
+            </form>
+        </fieldset>
+
+        <fieldset>
+            <legend>Create Program</legend>
+
+            <form>
+                <input type="date" name="date" id="date">
+
+                <div id="dateError"></div>
+
+                <input type="button" value="Create Program" id="createProgram" onclick="createProgram()">
+
+                <div id="programDate"></div>
+                
+            </form>
+
+
+        </fieldset>
+    </div>
+    <div>
+
+
+
+
+    </div>
+
+
+    <script type="text/javascript" src="entiteti.js"></script>
+    <script type="text/javascript" src="form.js"></script>
+</body>
+
+</html>
