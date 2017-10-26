@@ -1,5 +1,7 @@
 var movies = [];
 
+var programs = [];
+
 function createMovie() {
     
     var titleElement = document.getElementById('movieTitle');
@@ -8,6 +10,7 @@ function createMovie() {
     var genreOptionElement = genreSelectElement[genreSelectElement.selectedIndex];
     var movieListElement = document.getElementById('movie-list');
     var errorElement = document.getElementById('movieError');
+    var moviesSelectElement = document.getElementById('movies');
 
 
     var title = titleElement.value;
@@ -29,78 +32,73 @@ function createMovie() {
 //OVDE UBACUJEMO MOVIE U LIST OF MOVIES!!
     movies.push(movie);
 
+    
     //moze i preko createElement()!!!!
-
+    
     //PRAVIMO UL KOJI NAM PRIKAZUJE KOJE FILMOVE SMO NAPRAVILI
     var movieListHTML = '<ul>';
+    var moviesOptions = '<option value="none">--</option>';
 
     for (var i = 0; i < movies.length; i++) {
         var film = movies[i];
         movieListHTML += '<li>' + film.getInfo() + '</li>';
+        moviesOptions += '<option>' + film.title + '</option>'
     }
 
     movieListHTML += '</ul>';
 
 
 //UBACUJE LISTU FILMOVA U UL DIV ISPOD DUGMETA
-    movieListElement.innerHTML = getMovieListHTML(movies);
+    movieListElement.innerHTML = movieListHTML;
+    moviesSelectElement.innerHTML = moviesOptions;
 
 
 //RESTARTUJE TITLE I LENGTH KADA KREIRAMO MOVIE
     titleElement.value = '';
     lengthElement.value = '';
 
-}
-
-function getMovieListHTML(moviesArray) {
+};
 
 
-   var movieListHTML = '<ul>';
-
-    for (var i = 0; i < movies.length; i++) {
-        var film = movies[i];
-        movieListHTML += '<li>' + film.getInfo() + '</li>';
-    }
-
-    movieListHTML += '</ul>';
-
-    return movieListHTML;
-    
-}
 
 
 //OVDE PRAVIMO KONSTURKTOR ZA DATUM!!!
 
-var programs = [];
 
 function createProgram() {
     var dateElement = document.getElementById('date');
     var errorElement = document.getElementById('dateError');
+    var progListElement = document.getElementById('program-list');
+    var progSelectElement = document.getElementById('programs');
 
     var pDate = dateElement.value;
-    var formatedDate = formatedDate(pDate);
 
 
 //ERROR ZA DATUM
-    if(!date) {
+    if(!pDate) {
         errorElement.textContent = 'Error';
         return;
     }
 
     errorElement.textContent = '';
 
-    var program = new Program(formatedDate);
+    var program = new Program(pDate);
     
-        programs.push(program);
-
-
-    function formatedDate(stringDate) {
-        var date = new Date(stringDate);
-        var result = '';
-        return result += date.getDate() + '.' + date.getMonth() + '.' + date.getFullYear() + '.';
-    }
-
+    programs.push(program);
     
+    var programListHTML = '<ul>';
+    var programsOptions = '<option value="none">--</option>';
+    
+        for (var i = 0; i < programs.length; i++) {
+            var prog = programs[i];
+            programListHTML += '<li>' + prog.getInfo() + '</li>';
+            programsOptions += '<option>' + prog.getInfo() + '</option>'
+        }
+    
+        programListHTML += '</ul>';
 
-}
+        progListElement.innerHTML = programListHTML;
+        progSelectElement.innerHTML = programsOptions;
+
+};
 

@@ -127,7 +127,7 @@ var Continent = Object.freeze({
 
     var player_1 = createPlayer('SR', 15, Continent.EU, 'Ivan', 'Nikolic', 'Nov 15 1984', 1500);
     var player_2 = createPlayer('SR', 15, Continent.EU, 'Ivan', 'Nikolic', 'Nov 15 1984', 1500);
-    var player_3 = createPlayer('SR', 15, Continent.EU, 'Ivan', 'Nikolic', 'Nov 15 1984', 1500);
+    var player_3 = createPlayer('GR', 15, Continent.EU, 'Ivan', 'Nikolic', 'Nov 15 1984', 1500);
     var player_4 = createPlayer('SR', 15, Continent.EU, 'Ivan', 'Nikolic', 'Nov 15 1984', 1500);
 
     var bettPlaceAddress_1 = new Address('SR', 'Beograd', '11000', 'Nemanjina', '4');

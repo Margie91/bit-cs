@@ -13,11 +13,10 @@
 <body>
     <h1>Movie festival</h1>
     <div class="createM">
-
+        <form>
         <fieldset>
             <legend>Create Movie</legend>
 
-            <form>
                 <input type="text" value='' placeholder="title" id="movieTitle">
                 <input type="number" value='' placeholder="length" id="movieLength">
                 <select name="genre-sel" id="genre-sel">
@@ -29,31 +28,40 @@
                 </select>
 
                 <div id="movieError" class="error"></div>
-                <input id='create' type="button" onclick="createMovie()" value="Create Movie">
+                <input class='greenButton' id='create' type="button" onclick="createMovie()" value="Create Movie">
 
                 <hr>
 
                 <div id="movie-list"></div>
 
-            </form>
         </fieldset>
 
         <fieldset>
             <legend>Create Program</legend>
 
-            <form>
+            
                 <input type="date" name="date" id="date">
 
-                <div id="dateError"></div>
+                <div id="dateError" class="error"></div>
 
-                <input type="button" value="Create Program" id="createProgram" onclick="createProgram()">
+                <input class='greenButton' type="button" value="Create Program"  onclick="createProgram()">
 
-                <div id="programDate"></div>
+                <div id="program-list"></div>
                 
-            </form>
-
-
         </fieldset>
+
+        <fieldset>
+            <legend>Add Movie To Program</legend>
+
+            <select name="movies" id="movies">
+            </select>
+            <select name="programs" id="programs">
+                <option value="none">--</option>
+            </select>
+
+            <input class='greenButton' type="button" value="Add Movie To Program" onclick="addMovie()">
+        </fieldset>
+    </form>
     </div>
     <div>
 
