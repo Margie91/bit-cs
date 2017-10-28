@@ -42,7 +42,7 @@ function createMovie() {
     for (var i = 0; i < movies.length; i++) {
         var film = movies[i];
         movieListHTML += '<li>' + film.getInfo() + '</li>';
-        moviesOptions += '<option>' + film.title + '</option>'
+        moviesOptions += '<option + value =' + i + '>' + film.title + '</option>'
     }
 
     movieListHTML += '</ul>';
@@ -92,7 +92,7 @@ function createProgram() {
         for (var i = 0; i < programs.length; i++) {
             var prog = programs[i];
             programListHTML += '<li>' + prog.getInfo() + '</li>';
-            programsOptions += '<option>' + prog.getInfo() + '</option>'
+            programsOptions += '<option value =' + i + '>' + prog.getInfo() + '</option>';
         }
     
         programListHTML += '</ul>';
@@ -101,4 +101,40 @@ function createProgram() {
         progSelectElement.innerHTML = programsOptions;
 
 };
+
+//OVDE SE DODAJE SELEKTOVAN FILM U SELEKTOVAN PROGRAM
+
+function addMovie() {
+    var progSelectElement = document.getElementById('programs');
+    var progOptionSelected = progSelectElement[progSelectElement.selectedIndex].value;
+    var moviesSelectElement = document.getElementById('movies');
+    var moivesOptionSelected = moviesSelectElement[moviesSelectElement.selectedIndex].value;
+    var programMovieList = document.getElementById('movieList_in_program');
+    var erorrMovieList = document.getElementById('error_program_movie_list');
+
+    //ERROR ako nije selekovan program ili film
+    if (progOptionSelected === 'none' || moivesOptionSelected === 'none' ) {
+        erorrMovieList.textContent = 'Error! Please select a movie and a program!'
+    }
+
+    erorrMovieList = '';
+
+
+    //dodaje se selektovani movie
+    programs[progOptionSelected].movieList.push(movies[moivesOptionSelected]);
+
+    var output = '<p> Program date: ' +  programs[progOptionSelected].getInfo() + '</p>';
+    output += '<ol>';
+    
+        for (var i = 0; i < programs[progOptionSelected].movieList.length; i++) {
+            output += '<li>' + programs[progOptionSelected].movieList[i].getInfo() + '</li>';
+        }
+    
+        output += '</ol>';
+
+       programMovieList.innerHTML = output;
+
+}
+
+//DODAJ FESTIVAL!!
 

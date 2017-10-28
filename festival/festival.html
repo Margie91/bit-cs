@@ -54,12 +54,17 @@
             <legend>Add Movie To Program</legend>
 
             <select name="movies" id="movies">
+                <option value="none">--</option>
             </select>
             <select name="programs" id="programs">
                 <option value="none">--</option>
             </select>
 
+            <div id="error_program_movie_list"></div>
+
             <input class='greenButton' type="button" value="Add Movie To Program" onclick="addMovie()">
+
+            <div id="movieList_in_program"></div>
         </fieldset>
     </form>
     </div>

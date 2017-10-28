@@ -10,8 +10,11 @@ Movie.prototype.getInfo = function () {
 
 function Program(date) {
     this.date = new Date(date);
+    this.movieList = [];
 };
 
 Program.prototype.getInfo = function () {
     return this.date.getDate() + '.' + (this.date.getMonth() + 1) + '.' + this.date.getFullYear() + '.';
 };
+
+//FESTIVAL!!!
