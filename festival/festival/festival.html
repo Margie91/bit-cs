@@ -60,11 +60,27 @@
                 <option value="none">--</option>
             </select>
 
-            <div id="error_program_movie_list"></div>
+            <div class="error" id="error_program_movie_list"></div>
 
             <input class='greenButton' type="button" value="Add Movie To Program" onclick="addMovie()">
 
             <div id="movieList_in_program"></div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Festival</legend>
+
+            <select name="festivalProgram" id="festivalProgram">
+                <option value="none">--</option>
+            </select>
+
+            <div class="error" id="festivalError"></div>
+
+            <input type="button" class="greenButton" value="Add Program to Festival" onclick="addProgram()">
+            <input type="button" class="greenButton" value="Festival Information" onclick="festInfo()">
+
+            <div id="festivalList"></div>
+
         </fieldset>
     </form>
     </div>

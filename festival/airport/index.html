@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>Airport</title>
+</head>
+<body>
+    <h1>Airport</h1>
+    
+    <form>
+        <fieldset>
+            <legend>Passenger Information</legend>
+
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="lastName" placeholder="Last Name">
+
+            <select name="category" id="category">
+                <option value="0">Economy</option>
+                <option value="1">Business</option>
+            </select>
+
+            <input type="number" id="seat">
+
+            <div class="error" id="passError"></div>
+
+            <input type="button" value="Submit Information" class="submit" onclick="createPassenger()">
+
+            <div id="passInfo"></div>
+        </fieldset>
+    </form>
+
+    <script type="text/javascript" src="airport.js"></script>
+    <script></script>
+</body>
+</html>

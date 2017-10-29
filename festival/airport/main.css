@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    width: 400px;
+    margin: 20px auto;
+}
+
+fieldset {
+    padding: 15px;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgb(236, 235, 235);
+    border-radius: 7px;
+}
+
+input:focus {
+    background-color: rgb(219, 255, 249);
+}
+
+select {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: rgb(236, 235, 235);
+    border-radius: 7px;
+}
+
+.submit {
+    border-radius: 7px;
+    border: none;
+    background-color: rgb(78, 184, 170);
+    color: white;
+}
+
+.submit:hover {
+    background-color: rgb(119, 224, 210);
+}
