@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    margin: 0 auto;
+    width: 500px;
+}
+
+fieldset {
+    margin-top: 10px;
+}
+
+
+
+input, select{
+    display: block;
+    width: 100%;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 5px;
+}
+
+.greenButton {
+    background-color: rgb(77, 192, 77);
+    border: none;
+    padding: 10px;
+    color: white;
+}
+
+.greenButton:hover {
+    background-color: rgb(92, 233, 92);
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.green {
+    color: rgb(0, 112, 0);
+}
