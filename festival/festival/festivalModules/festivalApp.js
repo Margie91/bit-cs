@@ -1,4 +1,50 @@
-var UIController = (function () {
+var DataController = (function () {
+    
+        var data = {
+            movies: []
+        };
+    
+        function Movie(title, length, genre) {
+            this.title = title;
+            this.length = length;
+            this.genre = genre;
+        }
+    
+        Movie.prototype.getInfo = function () {
+            return this.title + ', ' + ' ' + this.length + 'min, ' + this.genre;
+        }
+    
+        function addMovie(title, length, genre) {
+            var movie = new Movie(title, parseFloat(length), genre);
+            data.movies.push(movie);
+            return movie;
+        }
+    
+        function calcTotalMovieLength() {
+            var total = 0;
+    
+            data.movies.forEach(function(movie) {
+                total += movie.length;
+            });
+            console.log(total);
+                return total;
+        }
+    
+        //test
+        function logData() {
+            console.log(data);
+        }
+    
+        return {
+            addMovieItem: addMovie,
+            //test
+            log: logData,
+            calcLength: calcTotalMovieLength
+        }
+    
+    })();
+    
+    var UIController = (function () {
 
     var DOMStrings = {
         inputTitle: 'movieTitle',
@@ -6,7 +52,8 @@ var UIController = (function () {
         selectGenre: 'genre-sel',
         buttonCreate: '#create',
         formEl: 'form',
-        movieError: '#movieError'
+        movieError: '#movieError',
+        totalLength: '#totalLength p'
     }
     function getDOMStrings() {
         return DOMStrings;
@@ -40,13 +87,18 @@ var UIController = (function () {
         document.querySelector(DOMStrings.movieError).textContent = '';
     }
 
+    function displayTotalMovieLength() {
+        var lengthEl = document.querySelector(DOMStrings.totalLength);
+        lengthEl.textContent = 'Total length of all movies: ' + DataController.calcLength() + 'min';
+    }
+
     function showError(input) {
         var errorMsg = 'Unknown Error!';
         if (!input.title) {
             error = 'Error! Enter title';
         } else if (!input.length) {
             errorMsg = 'Error! Enter length';
-        } else if (input.genre === 'none') {
+        } else if (input.genre == 'none') {
             errorMsg = 'Error! Select genre';
         }
 
@@ -56,48 +108,15 @@ var UIController = (function () {
     return {
         getInput: collectInput,
         displayListItem: displayListItem,
-        //getDOMstrings
         DOMStrings: getDOMStrings,
         reset: clearFormInputs,
-        showError: showError
+        showError: showError,
+        displayLength: displayTotalMovieLength
     }
 
 })();
 
-var DataController = (function () {
 
-    var data = {
-        movies: []
-    };
-
-    function Movie(title, length, genre) {
-        this.title = title;
-        this.length = length;
-        this.genre = genre;
-    }
-
-    Movie.prototype.getInfo = function () {
-        return this.title + ', ' + ' ' + this.length + 'min, ' + this.genre;
-    }
-
-    function addMovie(title, length, genre) {
-        var movie = new Movie(title, parseFloat(length), genre);
-        data.movies.push(movie);
-        return movie;
-    }
-
-    //test
-    function logData() {
-        console.log(data);
-    }
-
-    return {
-        addMovieItem: addMovie,
-        //test
-        log: logData
-    }
-
-})();
 
 var mainController = (function (UIctrl, dataCtrl) {
 
@@ -117,14 +136,14 @@ var mainController = (function (UIctrl, dataCtrl) {
 
     }
 
-    //ubaci i DOMStrings
+
 
     function ctrlAddMovieItem() {
         //1.get form data
         var input = UIctrl.getInput();
 
         //validate error
-        if (!input.title || !input.length || !input.genre) {
+        if (!input.title || !input.length || input.genre == 'none') {
             UIctrl.showError(input);
             return;
         }
@@ -139,8 +158,10 @@ var mainController = (function (UIctrl, dataCtrl) {
         UIctrl.displayListItem(movie);
 
         //5. calc movie count
+       
 
         //6. update UI
+       UIctrl.displayLength();
     }
 
 
