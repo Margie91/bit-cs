@@ -19,12 +19,29 @@ var dataController = (function () {
         this.student = student;
         this.grade = grade;
         this.subject = subject;
+        this.passed = grade > 5;
     }
 
     Exam.prototype.getInfo = function () {
         return this.student.getInfo() + ' - ' + this.subject + '  ' + this.grade;
     };
 
+
+    // function getTotalNum() {
+    //     return data.passed.length + data.failed.length;
+    // }
+    function getPassedNum() {
+        return data.passed.length;
+    }
+    function getFailedNum() {
+        return data.failed.length;
+    }
+    function getFailedPercent() {
+        return Math.round((data.failed.length / totalNumbOfStudents()) * 100);
+    }
+    function getPassedPercent() {
+        return Math.round((data.passed.length / totalNumbOfStudents()) * 100);
+    }
 
     //addExam
     function addExam(studentName, grade, subject) {
@@ -53,7 +70,11 @@ var dataController = (function () {
     return {
         addExam: addExam,
         totalNumbOfStudents: totalNumbOfStudents,
-
+        // getTotalNum: getTotalNum,
+        getPassedNum: getPassedNum,
+        getFailedNum: getFailedNum,
+        getFailedPercent: getFailedPercent,
+        getPassedPercent: getPassedPercent,
         //test
         test: logData
     }
@@ -69,13 +90,30 @@ var UIController = (function () {
         grade: ".add-grade", 
         subject: ".add-subject",
         error: "#input_error",
-        passedList: ".passed-list",
-        failedList: ".failed-list",
-        numbOfStudents: "#numbOfStudents"
+        numbOfStudents: "#numbOfStudents",
+        month: ".exam-title-month",
+        outputPassed: '.passed-list',
+        outputFailed: '.failed-list',
+        outputPassedCount: '.exam-passed-count',
+        outputFailedCount: '.exam-failed-count',
+        outputPassedPercent: '.exam-passed-percentage',
+        outputFailedPercent: '.exam-failed-percentage',
     }
 
     function getDOMStrings() {
         return DOMStrings;
+    }
+
+    function displayDate() {
+        const months = [ "January", "February", "March", "April", "May", "June", 
+        "July", "August", "September", "October", "November", "December" ];
+
+        let monthEl = $(DOMStrings.month);
+        const month = new Date().getMonth();
+    
+        monthEl.text(months[month]);
+
+
     }
 
     //collect input
@@ -100,13 +138,47 @@ var UIController = (function () {
         document.querySelector(DOMStrings.grade).value = '';
     }
 
-    //display passed and failed  ISPRAVI
-    function displayPassed(exam) {
-        var pass = document.querySelector(DOMStrings.passedList);
-
-        var output = '<p>' + exam.getInfo() + '</p>';
     
-        pass.textContent = output;
+    function displayResults(stats1, stats2, pPercent, fPercent) {
+        $(DOMStrings.outputPassedCount).text(stats1);
+        $(DOMStrings.outputFailedCount).text(stats2);
+        $(DOMStrings.outputPassedPercent).text(pPercent + "%");
+        $(DOMStrings.outputFailedPercent).text(fPercent + "%");
+    }
+    var i = 0;
+    var j = 0;
+    function displayStudent(exam) {
+        var passedList = $(DOMStrings.outputPassed);
+        var failedList = $(DOMStrings.outputFailed);
+        if (exam.passed) {
+            var output01 = $('<div class="item clearfix" id="passed-' + i + '"></div>');
+            passedList.append(output01);
+            var output02 = $('<div class="item-description">' + exam.student.getInfo() + '</div>');
+            output01.append(output02);
+            var output03 = $('<div class="right clearfix"></div>');
+            output01.append(output03);
+            var output04 = $('<div class="item-value">' + exam.grade + '</div>');
+            output03.append(output04);
+            var output05 = $('<div class="item-delete"></div>');
+            output03.append(output05);
+            var output06 = $('<button class="item-delete-btn">x</button>');
+            output05.append(output06);
+            i++;
+        } else {
+            var output01 = $('<div class="item clearfix" id="failed-' + j + '"></div>');
+            failedList.append(output01);
+            var output02 = $('<div class="item-description">' + exam.student.getInfo() + '</div>');
+            output01.append(output02);
+            var output03 = $('<div class="right clearfix"></div>');
+            output01.append(output03);
+            var output04 = $('<div class="item-value">' + exam.grade + '</div>');
+            output03.append(output04);
+            var output05 = $('<div class="item-delete"></div>');
+            output03.append(output05);
+            var output06 = $('<button class="item-delete-btn">x</button>');
+            output05.append(output06);
+            j++;
+        }
     }
 
     //display numb of students
@@ -129,8 +201,10 @@ var UIController = (function () {
         DOMStrings: getDOMStrings,
         getInput: collectInput,
         clear: clearInput,
-        displayPassed: displayPassed,
-        numbOfStudents: displayNumbOfStudents
+        numbOfStudents: displayNumbOfStudents,
+        displayDate: displayDate,
+        displayResults: displayResults,
+        displayStudent: displayStudent
     }
 
 })();
@@ -138,6 +212,8 @@ var UIController = (function () {
 var mainController = (function (UIctrl, dataCtrl) {
     
     function setUpEventListeners() {
+          //display date
+          UIctrl.displayDate();
         var DOM = UIctrl.DOMStrings();
         
         document.querySelector(DOM.addButton).addEventListener('click', function () {
@@ -147,6 +223,7 @@ var mainController = (function (UIctrl, dataCtrl) {
 
     //main func
     function addExamResults() {
+
         //collect input
         var input = UIctrl.getInput();
 
@@ -160,9 +237,11 @@ var mainController = (function (UIctrl, dataCtrl) {
 
         //display numb of students
         UIctrl.numbOfStudents();
+
+        UIctrl.displayStudent(exam);
         
         //displayResult
-        UIctrl.displayPassed(exam);
+        UIctrl.displayResults(dataCtrl.getPassedNum(), dataCtrl.getFailedNum(), dataCtrl.getPassedPercent(), dataCtrl.getFailedPercent());
         
         //test
         dataCtrl.test();
