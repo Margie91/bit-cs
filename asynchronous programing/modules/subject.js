@@ -1,5 +1,5 @@
-    let observers = [];
     var os = require('os');
+    let observers = [];
     
     function addObserver(observer){
         observers.push(observer);
