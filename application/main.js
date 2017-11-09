@@ -14,4 +14,4 @@ class Main {
 	}
 }
 
-new Main('nikiv84').run();
+new Main('marija').run();
