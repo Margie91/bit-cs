@@ -27,7 +27,7 @@ class Main {
                         'box-shadow':'0px 0px 50px gray',
                         });
                 image.hover(function(){
-                    $(this).css({'border':'2px solid lightblue'});
+                    $(this).css({'border':'2px solid gray'});
                 }, function(){
                     $(this).css({'border':'none'});
                 })
