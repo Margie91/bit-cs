@@ -12,8 +12,9 @@ class RepoThings {
             items.forEach((item) => {
                 const name = item.name;
                 const avatarUrl = item.owner.avatar_url;
+                const url = item.owner.html_url;
 
-                const thing = new Thing(name, avatarUrl, "Repo");
+                const thing = new Thing(name, avatarUrl, url);
 
                 things.push(thing);
             });

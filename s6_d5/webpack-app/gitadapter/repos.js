@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const requestUrl = "https://api.github.com/search/repositories?q=explore&per_page=10";
+const requestUrl = "https://api.github.com/search/repositories?q=bit-web";
 
 class Repos {
     constructor() { }

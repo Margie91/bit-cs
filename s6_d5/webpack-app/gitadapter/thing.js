@@ -1,8 +1,7 @@
 class Thing{
-    constructor(name, avatarUrl, kind,url){
+    constructor(name, avatarUrl, url){
         this._name = name;
         this._avatarUrl = avatarUrl;
-        this._kind = kind;
         this.url = url;
     }
 
@@ -19,7 +18,7 @@ class Thing{
     }
 
     getData() {
-        return `${this._kind} name: ${this._name}\navatar: ${this._avatarUrl}\n`;
+        return `name: ${this._name}\navatar: ${this._avatarUrl}\n`;
     }
 }
 
