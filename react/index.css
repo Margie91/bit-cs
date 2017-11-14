@@ -118,6 +118,11 @@ footer nav {
 
 /*OVO JE ZA ABOUT STRANU*/
 
+.about {
+    margin-top: 80px;
+    margin-bottom: 100px;
+}
+
 .about h2{
     font-family: 'Playfair Display', serif;
     font-size: 2.5em;
@@ -127,6 +132,7 @@ footer nav {
 .about p {
     font-size: 1.3em;
     font-family: 'Montserrat', sans-serif;
+    text-indent: 50px;
 }
 
 .about hr {
@@ -137,4 +143,38 @@ footer nav {
 
 .about:last-child{
     margin-bottom: 50px;
+}
+
+/*OVO JE ZA AUTHORS STRANU*/
+
+#authorsTitle {
+    color: rgb(65, 64, 64);
+    padding-top: 15px;
+    padding-bottom: 50px;
+    font-family: 'Playfair Display', serif;
+    /*font-family: 'Abril Fatface', cursive;*/
+}
+
+.authors {
+   /* background-color: rgba(191, 235, 231, 0.6);*/
+    border-bottom: 1px solid rgb(250, 190, 181);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    /*background-image: url("backgroundIMG/linedpaper.png");*/
+    height: 100%;
+}
+
+.authors h4 {
+    padding: 10px 0px 20px 10px;
+    text-align: center;
+}
+
+.authors h3 {
+    background-color: rgb(233, 206, 202);
+    border-bottom: 5px solid rgba(255, 185, 174, 0.7);
+} 
+
+.authorsDiv {
+    height: 100%;
+    margin-bottom: 40px;
 }

@@ -3,17 +3,16 @@ import React from "react";
 
 const Author = (props) => {
     return (
-        <div className="col-12 authors">
-            <div className="">
+        <div className="col-12 col-md-6 authorsDiv">
+            <div className="authors">
                 <h3>{props.name}</h3>
-                <p>{props.website}</p>
-                <hr/>
+                <h4>E-mail: {props.website}</h4>
             </div>
         </div>
     );
 };
 
-class Authors extends React.Component {
+class GetAuthors extends React.Component {
     constructor(props) {
         super(props);
         this.state = {data: []};
@@ -36,6 +35,17 @@ class Authors extends React.Component {
          );
      }
 
+}
+
+const Authors = (props) => {
+    return (
+        <div className="row">
+            <div className="col-12">
+                <h1 id="authorsTitle">- Our Authors -</h1>
+            </div>
+            <GetAuthors />
+        </div>
+    )
 }
 
 
