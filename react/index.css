@@ -9,6 +9,34 @@ header {
     background-image: url("backgroundIMG/dark_wood.png");
     box-shadow: 0px 5px 50px rgb(112, 112, 112);
     border-bottom: 10px solid rgba(190, 190, 190, 0.4);
+    margin-bottom: 50px;
+}
+
+nav {
+    width: 100%;
+    text-align: center;
+}
+
+ul {
+    color: white;
+    list-style: none;
+}
+
+li {
+    display: inline-block;
+    padding-right: 70px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2em;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: #FCA99B;
+    text-decoration: none;
 }
  
 h1 {
@@ -26,12 +54,21 @@ body {
     background-image: url("backgroundIMG/ricepaper_v3.png");
 }
 
+/* .box-border {
+    border: 1px solid rgb(238, 10, 10);
+    margin: 5px;
+    height: 100%;
+    padding: 10px;
+} */
+
 .posts {
     margin-top: 50px;
     /*font-family: 'Playfair Display', serif;*/
     font-family: 'Montserrat', sans-serif;
     font-size: 1.2em;
 }
+
+
 
 hr {
     width: 70%;
@@ -42,11 +79,11 @@ hr {
 h3 {
     color: rgb(58, 58, 59);
     margin-bottom: 30px;
-    background-color: rgba(197, 223, 196, 0.7);
+    background-color: rgba(191, 235, 231, 0.6);
     padding: 15px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    border-bottom: 2px solid rgb(188, 211, 186);
+    border-bottom: 5px solid rgb(188, 211, 186);
     font-family: 'Playfair Display', serif;
    /* font-family: 'Montserrat', sans-serif; */
     font-weight: bold;
@@ -60,6 +97,7 @@ footer {
     background-color: #6A6A6D;
     background-image: url("backgroundIMG/dark_wood.png");
     box-shadow: 0px -5px 30px rgb(128, 128, 128);
+    height: 200px;
 }
 
 .footerPar {
@@ -68,5 +106,35 @@ footer {
     letter-spacing: 0.1em;
     color: white;
     text-align: center;
-    padding-top: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0px;
+}
+
+footer nav {
+    padding-top: 20px;
+}
+
+
+/*OVO JE ZA ABOUT STRANU*/
+
+.about h2{
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+.about p {
+    font-size: 1.3em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.about hr {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    width: 50%;
+}
+
+.about:last-child{
+    margin-bottom: 50px;
 }
