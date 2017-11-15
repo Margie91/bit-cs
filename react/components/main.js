@@ -12,6 +12,7 @@ const Post = (props) => {
             <div className="box-border">
                 <h3>{props.title}</h3>
                 <p>{props.body}</p>
+                <p className="btn btn-primary"><Link to={`/post/${props.id}`}>Read more</Link></p>
                 <hr/>
             </div>
         </div>
@@ -41,7 +42,7 @@ class Posts extends React.Component{
    
     render(){
         return (
-            this.state.data.map((post) =>  <Link to={`/post/${post.id}`}><Post title={post.title} body={post.body} key={post.id}/></Link> )
+            this.state.data.map((post) => <Post title={post.title} body={post.body} id={post.id} key={post.id} /> )
         );
     }
 
