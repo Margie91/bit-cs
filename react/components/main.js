@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Data from "./data";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 
 
@@ -40,7 +41,7 @@ class Posts extends React.Component{
    
     render(){
         return (
-            this.state.data.map((post) => <Post title={post.title} body={post.body} key={post.id}/> )
+            this.state.data.map((post) =>  <Link to={`/post/${post.id}`}><Post title={post.title} body={post.body} key={post.id}/></Link> )
         );
     }
 
@@ -48,9 +49,9 @@ class Posts extends React.Component{
 
 const Main = (props) => {
     return (
-            <div className="row">
-                <Posts />
-            </div>
+        <div className="row">
+            <Posts />
+        </div>
     );
 };
 
