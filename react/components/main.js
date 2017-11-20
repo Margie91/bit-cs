@@ -52,18 +52,18 @@ class Posts extends React.Component{
         if(searchTerm === "") {
             this.setState({
                 data: currentData
-            })
+            });
 
             return;
         }
 
         let filteredData = currentData.filter((item) => {
             return item.title.includes(searchTerm);
-        })
+        });
 
         this.setState({
             data: filteredData
-        })
+        });
     }
    
     render(){
