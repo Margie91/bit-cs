@@ -54,10 +54,10 @@ const Company = (props) => {
 
 class SingleAuthor extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
 
 
-        this.state = { authorData: [] }
+        this.state = { authorData: null };
     }
 
     componentDidMount() {
@@ -75,14 +75,19 @@ class SingleAuthor extends React.Component {
 
     render() {
         let author = this.state.authorData;
+        console.log(author);
+
+        if(!author) {
+            return <h1>Loading...</h1>
+        }
 
         return (
             <div>
                 <NameSurname name={author.name} username={author.username} email={author.email} phone={author.phone} />
                 <hr className="singleAuthorHR"/>
-                <Info />
+                <Info street={author.address.street} city={author.address.city} zipcode={author.address.zipcode} />
                 <hr className="singleAuthorHR"/>
-                <Company />
+                <Company name={author.company.name} slogan={author.company.catchPhrase} />
             </div>
         )
     }
