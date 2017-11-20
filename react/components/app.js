@@ -1,10 +1,11 @@
 import React from "react";
 import Header from "./header";
-import Main from "./main";
+import Posts from "./main";
 import Authors from "./authors";
 import About from "./about";
 import Footer from "./footer";
 import SinglePost from "./post";
+import SingleAuthor from "./authorPage";
 import {Switch, Route} from "react-router-dom";
 
 const App = (props) => {
@@ -13,10 +14,11 @@ const App = (props) => {
             <Header />
             <div className = "container">
                 <Switch>
-                    <Route exact path="/" component={Main}/>
+                    <Route exact path="/" component={Posts}/>
                     <Route path="/authors" component={Authors}/>
                     <Route path="/about" component={About}/>
                     <Route path="/post/:id" component={SinglePost}/>
+                    <Route path="/authorPage/:id" component={SingleAuthor}/>
                 </Switch>
             </div>
             <Footer />

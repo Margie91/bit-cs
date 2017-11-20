@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import Data from "./data";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import Search from "./search";
 
 
 
@@ -24,7 +25,9 @@ const Post = (props) => {
 class Posts extends React.Component{
     constructor(props){
         super(props);
-        this.state = {data: []};
+        this.state = {data: [], allData: []};
+
+        this.filterPosts = this.filterPosts.bind(this);
 
     }
 
@@ -36,38 +39,57 @@ class Posts extends React.Component{
             .then((result) => {
                 this.setState({
                     data: result,
+                    allData: result
+
                 });
             });
+    }
+
+    filterPosts(searchTerm) {
+        let currentData = this.state.allData;
+        console.log(searchTerm);
+
+        if(searchTerm === "") {
+            this.setState({
+                data: currentData
+            })
+
+            return;
+        }
+
+        let filteredData = currentData.filter((item) => {
+            return item.title.includes(searchTerm);
+        })
+
+        this.setState({
+            data: filteredData
+        })
     }
    
     render(){
         return (
-            this.state.data.map((post) => <Post title={post.title} body={post.body} id={post.id} key={post.id} /> )
+            <div>
+            <Search requestedSearch={this.filterPosts} instant={true} />
+            <div className="row">
+            {this.state.data.map((post) => <Post title={post.title} body={post.body} id={post.id} key={post.id} /> )}
+            </div>
+            </div>
         );
     }
 
 }
 
-const Main = (props) => {
+/*const Main = (props) => {
     return (
-        <div className="row">
-            <Posts />
+        <div>
+            <Search requestedSearch={this.filterPosts} />
+            <div className="row">
+                <Posts />
+            </div>
         </div>
     );
-};
-
-// Post.propTypes = {
-//     title: PropTypes.string.isRequired,
-//     body: PropTypes.string.isRequired,
-//     // id: PropTypes.oneOf([1, 2, 3, 4, 5]),
-//     word: PropTypes.oneOf(["one", "paper", "whatever"])
-// };
-
-// const Posts = (props) => {
-//     return (
-//         Data.items.map((post) => <Post title={post.title} body={post.body} key={post.id} id={post.id}/> )
-//     );
-// };
+};*/
 
 
-export default Main;
+
+export default Posts;

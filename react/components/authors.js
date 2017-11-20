@@ -1,11 +1,12 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 
 const Author = (props) => {
     return (
         <div className="col-12 col-md-6 authorsDiv">
             <div className="authors">
-                <h3>{props.name}</h3>
+                <h3><Link to={`/authorPage/${props.id}`}>{props.name} </Link></h3>
                 <h4>E-mail: {props.website}</h4>
             </div>
         </div>
@@ -31,7 +32,7 @@ class GetAuthors extends React.Component {
 
      render(){
          return(
-            this.state.data.map((author) => <Author name={author.name} website={author.website} key={author.id}/> )
+            this.state.data.map((author) => <Author name={author.name} website={author.website} id={author.id} key={author.id} /> )
          );
      }
 
